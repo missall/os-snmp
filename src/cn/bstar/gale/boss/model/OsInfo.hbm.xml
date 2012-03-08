@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-12-22 9:41:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="cn.bstar.gale.boss.model.OsInfo" table="os_info" schema="public">
+		<id name="osId" type="long">
+			<column name="os_id" precision="10" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">SEQ_OS</param>
+			</generator>
+		</id>
+		<many-to-one name="serverManageInfo" class="cn.bstar.gale.boss.model.ServerManageInfo"
+			fetch="select" lazy="false">
+			<column name="server_id" precision="10" scale="0" />
+		</many-to-one>
+		<property name="ipAddress1" type="string">
+			<column name="ip_address_1" length="30" />
+		</property>
+		<property name="isVm" type="java.lang.Byte">
+			<column name="is_vm" precision="2" scale="0" />
+		</property>
+		<property name="osName" type="string">
+			<column name="os_name" length="20" />
+		</property>
+		<property name="osVersion" type="string">
+			<column name="os_version" length="20" />
+		</property>
+		<property name="osBit" type="string">
+			<column name="os_bit" length="10" />
+		</property>
+		<property name="osStatu" type="java.lang.Byte">
+			<column name="os_statu" precision="2" scale="0" />
+		</property>
+		<property name="osUser" type="string">
+			<column name="os_user" length="20" />
+		</property>
+		<property name="osPasswd" type="string">
+			<column name="os_passwd" length="20" />
+		</property>
+		<property name="ipAddress2" type="string">
+			<column name="ip_address_2" length="30" />
+		</property>
+		<property name="ipAddress3" type="string">
+			<column name="ip_address_3" length="30" />
+		</property>
+		<property name="ipAddress4" type="string">
+			<column name="ip_address_4" length="30" />
+		</property>
+		<property name="dataCreated" type="timestamp">
+			<column name="data_created" length="29" />
+		</property>
+		<property name="createdBy" type="java.lang.Long">
+			<column name="created_by" precision="10" scale="0" />
+		</property>
+		<property name="dateModified" type="timestamp">
+			<column name="date_modified" length="29" />
+		</property>
+		<property name="modifiedBy" type="java.lang.Long">
+			<column name="modified_by" precision="10" scale="0" />
+		</property>
+		<property name="memo" type="string">
+			<column name="memo" length="50" />
+		</property>
+		<property name="manageName" type="string">
+			<column name="manage_name" length="20" />
+		</property>
+		<property name="snmpUser" type="string">
+			<column name="snmp_user" length="20" />
+		</property>
+		<property name="snmpPasswd" type="string">
+			<column name="snmp_passwd" length="20" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+ 
+<beans>
+
+	<bean id="osMonitoringServer" class="cn.bstar.gale.boss.snmpif.osif.OsMonitoringServer" init-method="init" destroy-method="destroy">
+		<property name="hostMap">
+			<map>
+				<entry>
+					<key><value>interval</value></key>
+					<value>${snmp.time.interval}</value>
+				</entry>				
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="osServer" class="cn.bstar.gale.boss.snmpif.OsServer" singleton="false">
+		<property name="snmpMgtOsService" ref="snmpMgtOsService"/>
+	</bean>
+	
+</beans>

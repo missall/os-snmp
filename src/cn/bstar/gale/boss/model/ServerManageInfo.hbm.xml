@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2011-12-22 9:41:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="cn.bstar.gale.boss.model.ServerManageInfo" table="server_manage_info"
+		schema="public">
+		<id name="serverId" type="long">
+			<column name="server_id" precision="10" scale="0" />
+			<generator class="sequence">
+				<param name="sequence">SEQ_SERVER</param>
+			</generator>
+		</id>
+		<many-to-one name="domain" class="cn.bstar.gale.boss.model.Domain" fetch="select" lazy="false">
+			<column name="domain_id" precision="10" scale="0" unique="true" />
+		</many-to-one>
+		<property name="storeOrderId" type="java.lang.Long">
+			<column name="store_order_id" precision="10" scale="0" />
+		</property>
+		<property name="model" type="string">
+			<column name="model" length="50" />
+		</property>
+		<property name="assctId" type="string">
+			<column name="assct_id" length="30" />
+		</property>
+		<property name="serverLabel" type="string">
+			<column name="server_label" length="30" />
+		</property>
+		<property name="nicNum" type="java.lang.Long">
+			<column name="nic_num" precision="10" scale="0" />
+		</property>
+		<property name="memSize" type="string">
+			<column name="mem_size" length="50" />
+		</property>
+		<property name="cpuCs" type="string">
+			<column name="cpu_cs" length="50" />
+		</property>
+		<property name="cpuCoreNum" type="java.lang.Long">
+			<column name="cpu_core_num" precision="10" scale="0" />
+		</property>
+		<property name="cpuType" type="string">
+			<column name="cpu_type" length="50" />
+		</property>
+		<property name="hdSize" type="string">
+			<column name="hd_size" length="50" />
+		</property>
+		<property name="hdRaidType" type="java.lang.Long">
+			<column name="hd_raid_type" precision="10" scale="0" />
+		</property>
+		<property name="haveCdRom" type="java.lang.Byte">
+			<column name="have_cd_rom" precision="2" scale="0" />
+		</property>
+		<property name="haveStandbyPower" type="java.lang.Byte">
+			<column name="have_standby_power" precision="2" scale="0" />
+		</property>
+		<property name="dateCreated" type="timestamp">
+			<column name="date_created" length="29" />
+		</property>
+		<property name="createdBy" type="java.lang.Long">
+			<column name="created_by" precision="10" scale="0" />
+		</property>
+		<property name="dateModified" type="timestamp">
+			<column name="date_modified" length="29" />
+		</property>
+		<property name="modifiedBy" type="java.lang.Long">
+			<column name="modified_by" precision="10" scale="0" />
+		</property>
+		<set name="osInfos" table="os_info" inverse="true" lazy="false"
+			fetch="select">
+			<key>
+				<column name="server_id" precision="10" scale="0" />
+			</key>
+			<one-to-many class="cn.bstar.gale.boss.model.OsInfo" />
+		</set>
+	</class>
+</hibernate-mapping>
